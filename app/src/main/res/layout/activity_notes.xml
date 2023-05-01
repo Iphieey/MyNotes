@@ -54,6 +54,18 @@
             android:layout_marginVertical="8dp"
             android:padding="12dp"
             android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/notes_body_text"
+            android:hint="Body"
+            android:minLines="17"
+            android:gravity="top"
+            android:textSize="20sp"
+            android:layout_marginVertical="8dp"
+            android:padding="12dp"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
 </RelativeLayout>
