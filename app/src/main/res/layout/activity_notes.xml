@@ -47,7 +47,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/notes_title_text"
+            android:id="@+id/notes_title_text_view"
             android:hint="Title"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -58,9 +58,9 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/notes_body_text"
+            android:id="@+id/notes_body_text_view"
             android:hint="Body"
-            android:minLines="17"
+            android:minLines="15"
             android:gravity="top"
             android:textSize="20sp"
             android:layout_marginVertical="8dp"
