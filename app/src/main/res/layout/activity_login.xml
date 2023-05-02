@@ -77,6 +77,18 @@
             android:padding="16dp"
             android:layout_marginTop="12dp"
             />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/forgot_password_edit_text"
+            android:inputType="textPassword"
+            android:hint="Forgot Password"
+            android:textSize="20dp"
+            android:background="@drawable/rounded_corner"
+            android:padding="16dp"
+            android:layout_marginTop="12dp"
+            />
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:id="@+id/login_button"
