@@ -3,7 +3,10 @@ package uk.ac.tees.c2372619.mynotes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -23,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     ProgressBar progressBar;
     TextView createAccountButtonTextView;
+    TextView forgotPasswordTextView;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +39,13 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         progressBar = findViewById(R.id.progress_bar);
         createAccountButtonTextView = findViewById(R.id.create_account_text_view_button);
+        forgotPasswordTextView = findViewById(R.id.forgot_password);
 
         loginButton.setOnClickListener(view -> loginUser());
         createAccountButtonTextView.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this,UserAccountActivity.class)));
-
+        forgotPasswordTextView.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this,ResetPassword.class)));
+        sharedPreferences  = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        emailEditText.setText(sharedPreferences.getString("emailAddress",""));
     }
 
     void loginUser(){
@@ -55,6 +63,8 @@ public class LoginActivity extends AppCompatActivity {
 
     void loginAccountInFirebase(String email,String password){
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        emailEditText.clearFocus();
+        passwordEditText.clearFocus();
         changeInProgress(true);
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -63,6 +73,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
 
                     if (firebaseAuth.getCurrentUser().isEmailVerified()){
+
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString("emailAddress", email);
+                        myEdit.apply();
+
+
                         startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         finish();
 

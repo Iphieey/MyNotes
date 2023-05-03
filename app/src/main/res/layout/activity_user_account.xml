@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/email_edit_text"
             android:inputType="textEmailAddress"
-            android:hint="Email Id"
+            android:hint="Email ID"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -118,12 +118,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already have an account?"/>
+
         <TextView
+            android:id="@+id/login_text_view_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:id="@+id/login_text_view_button"
-            android:text="Login"/>
+            android:paddingLeft="5dp"
+            android:text="Login"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </RelativeLayout>
